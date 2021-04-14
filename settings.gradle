@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name = "Project 3 Weather"
