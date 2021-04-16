@@ -1,7 +1,9 @@
 package com.cis436.project3weather
 
 import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
+
 import com.cis436.project3weather.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
@@ -14,5 +16,7 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.container, MainFragment.newInstance())
                     .commitNow()
         }
+
+
     }
 }
