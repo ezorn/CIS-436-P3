@@ -14,14 +14,21 @@
         android:layout_height="40dp"
         android:text="TextView"
         android:textSize="24sp"
-        tools:layout_editor_absoluteY="58dp" />
+        app:layout_constraintBottom_toTopOf="@+id/DayBox2"
+        app:layout_constraintEnd_toStartOf="@+id/WeatherBox1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/WeatherBox1"
         android:layout_width="76dp"
         android:layout_height="40dp"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="58dp"
+        app:layout_constraintBottom_toTopOf="@+id/WeatherBox2"
+        app:layout_constraintEnd_toStartOf="@+id/TempaturesBox1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/DayBox1"
+        app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
     <TextView
@@ -30,8 +37,11 @@
         android:layout_height="40dp"
         android:text="TextView"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="267dp"
-        tools:layout_editor_absoluteY="58dp" />
+        app:layout_constraintBottom_toTopOf="@+id/TempaturesBox2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/WeatherBox1"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/DayBox2"
@@ -39,15 +49,21 @@
         android:layout_height="40dp"
         android:text="TextView"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="124dp" />
+        app:layout_constraintBottom_toTopOf="@+id/DayBox3"
+        app:layout_constraintEnd_toStartOf="@+id/WeatherBox2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DayBox1" />
 
     <ImageView
         android:id="@+id/WeatherBox2"
         android:layout_width="76dp"
         android:layout_height="40dp"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="124dp"
+        app:layout_constraintBottom_toTopOf="@+id/WeatherBox3"
+        app:layout_constraintEnd_toStartOf="@+id/TempaturesBox2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/DayBox2"
+        app:layout_constraintTop_toBottomOf="@+id/WeatherBox1"
         tools:src="@tools:sample/avatars" />
 
     <TextView
@@ -56,89 +72,115 @@
         android:layout_height="40dp"
         android:text="TextView"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="259dp"
-        tools:layout_editor_absoluteY="124dp" />
+        app:layout_constraintBottom_toTopOf="@+id/TempaturesBox3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/WeatherBox2"
+        app:layout_constraintTop_toBottomOf="@+id/TempaturesBox1" />
 
     <TextView
         android:id="@+id/DayBox3"
-        android:layout_width="122dp"
+        android:layout_width="145dp"
         android:layout_height="40dp"
         android:text="TextView"
         android:textSize="24sp"
-        tools:layout_editor_absoluteY="194dp" />
+        app:layout_constraintBottom_toTopOf="@+id/DayBox4"
+        app:layout_constraintEnd_toStartOf="@+id/WeatherBox3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DayBox2" />
 
     <ImageView
         android:id="@+id/WeatherBox3"
-        android:layout_width="122dp"
+        android:layout_width="76dp"
         android:layout_height="40dp"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="194dp"
+        app:layout_constraintBottom_toTopOf="@+id/WeatherBox4"
+        app:layout_constraintEnd_toStartOf="@+id/TempaturesBox3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/DayBox3"
+        app:layout_constraintTop_toBottomOf="@+id/WeatherBox2"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/TempaturesBox3"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
         android:text="TextView"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="290dp"
-        tools:layout_editor_absoluteY="187dp" />
+        app:layout_constraintBottom_toTopOf="@+id/TempaturesBox4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/WeatherBox3"
+        app:layout_constraintTop_toBottomOf="@+id/TempaturesBox2" />
 
     <TextView
         android:id="@+id/DayBox4"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
         android:text="TextView"
         android:textSize="24sp"
-        tools:layout_editor_absoluteY="257dp" />
-
-    <ImageView
-        android:id="@+id/WeatherBox4"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="290dp"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintBottom_toTopOf="@+id/DayBox5"
+        app:layout_constraintEnd_toStartOf="@+id/WeatherBox4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DayBox3" />
 
     <TextView
         android:id="@+id/TempaturesBox4"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
         android:text="TextView"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="289dp"
-        tools:layout_editor_absoluteY="290dp" />
-
-    <TextView
-        android:id="@+id/DayBox5"
-        android:layout_width="122dp"
-        android:layout_height="33dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteY="359dp" />
+        app:layout_constraintBottom_toTopOf="@+id/TempaturesBox5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/WeatherBox4"
+        app:layout_constraintTop_toBottomOf="@+id/TempaturesBox3" />
 
     <ImageView
-        android:id="@+id/WeatherBox5"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="392dp"
+        android:id="@+id/WeatherBox4"
+        android:layout_width="76dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/WeatherBox5"
+        app:layout_constraintEnd_toStartOf="@+id/TempaturesBox4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/DayBox4"
+        app:layout_constraintTop_toBottomOf="@+id/WeatherBox3"
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/TempaturesBox5"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
+        android:id="@+id/DayBox5"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
         android:text="TextView"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="289dp"
-        tools:layout_editor_absoluteY="392dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/WeatherBox5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DayBox4" />
 
     <TextView
-        android:id="@+id/message"
-        android:layout_width="match_parent"
-        android:layout_height="34dp"
-        android:text="MainFragment"
-        android:textSize="36sp" />
+        android:id="@+id/TempaturesBox5"
+        android:layout_width="145dp"
+        android:layout_height="40dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/WeatherBox5"
+        app:layout_constraintTop_toBottomOf="@+id/TempaturesBox4" />
+
+    <ImageView
+        android:id="@+id/WeatherBox5"
+        android:layout_width="76dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/TempaturesBox5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/DayBox5"
+        app:layout_constraintTop_toBottomOf="@+id/WeatherBox4"
+        tools:src="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
