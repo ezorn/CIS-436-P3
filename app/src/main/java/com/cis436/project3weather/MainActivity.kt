@@ -20,7 +20,9 @@ import org.json.JSONObject
 import com.cis436.project3weather.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
+
    private var requestQueue: RequestQueue? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -30,8 +32,6 @@ class MainActivity : AppCompatActivity() {
                     .commitNow()
         }
 
-        // super.onCreate(savedInstanceState)   // don't think i need to call this here bc it is called above
-        setContentView(R.layout.main_activity)
         //instantiate the request queue
         requestQueue = Volley.newRequestQueue(this)
         //create object request
@@ -51,9 +51,11 @@ class MainActivity : AppCompatActivity() {
                         val id = currentWeather.getInt("id")
                         val mainWeather = currentWeather.getString("main")
                         val description = currentWeather.getString("description")
+                        val icon = currentWeather.getString("icon")
                         Log.i("JSON info", "ID: $id")
                         Log.i("JSON info", "main weather: $mainWeather")
                         Log.i("JSON info", "Description: $description")
+                        Log.i("JSON info", "Icon: $icon")
                     } catch (ex: JSONException) {
                         Log.e("JSON Error", ex.message!!)
                     }
