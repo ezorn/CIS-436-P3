@@ -236,4 +236,6 @@ class MainActivity : AppCompatActivity() {
                 // format them with formatDate()
             // temp -- global variable -- format as string
             // icon -- get from each day's weather object
+                // dayXweather.getString("icon")
+
 }
