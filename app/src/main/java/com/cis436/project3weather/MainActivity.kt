@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                     val forecast : JSONArray = response.getJSONArray("list")
 
                     // Pick index to choose a time on the first day to get the weather
-                    var timeIndex : Int = 5
+                    var timeIndex : Int = 0
 
                     // we want a 5 day forecast at the same time each day, so we first
                     // get an element for each day by incrementing the time index by 8
@@ -155,12 +155,22 @@ class MainActivity : AppCompatActivity() {
                     day5Temp = mainObj5.getInt("temp")
 
                     // Print to info log
-                    Log.i("Day 1 Weather", day1Weather.toString())
                     Log.i("Day 1: ", day1dt.toString())
+                    Log.i("Day 1 Weather", day1Weather.toString())
+                    Log.i("Day 1 Temp", day1Temp.toString())
+                    Log.i("Day 2: ", day2dt.toString())
                     Log.i("Day 2 Weather", day2Weather.toString())
+                    Log.i("Day 2 Temp", day2Temp.toString())
+                    Log.i("Day 3: ", day3dt.toString())
                     Log.i("Day 3 Weather", day3Weather.toString())
+                    Log.i("Day 3 Temp", day3Temp.toString())
+                    Log.i("Day 4: ", day4dt.toString())
                     Log.i("Day 4 Weather", day4Weather.toString())
+                    Log.i("Day 4 Temp", day4Temp.toString())
+                    Log.i("Day 5: ", day5dt.toString())
                     Log.i("Day 5 Weather", day5Weather.toString())
+                    Log.i("Day 5 Temp", day5Temp.toString())
+
 
                 } catch (ex: JSONException) {
                     Log.e("JSON Error", ex.message!!)
