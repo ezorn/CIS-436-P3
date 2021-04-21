@@ -24,13 +24,22 @@ class MainActivity : AppCompatActivity() {
     private var requestQueue: RequestQueue? = null
     private final val API_KEY : String = "42baaa2f9a6308d59c4f77954ec6fea4"
 
+    // Daily forecast values
     var dailyWeather : JSONObject? = null
+    var dailyTemp : Int? = null
+
+    // Weekly forecast values
     var day1Weather : JSONObject? = null
     var day2Weather : JSONObject? = null
     var day3Weather : JSONObject? = null
     var day4Weather : JSONObject? = null
     var day5Weather : JSONObject? = null
 
+    var day1Temp : Int? = null
+    var day2Temp : Int? = null
+    var day3Temp : Int? = null
+    var day4Temp : Int? = null
+    var day5Temp : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +53,8 @@ class MainActivity : AppCompatActivity() {
         //instantiate the request queue
         requestQueue = Volley.newRequestQueue(this)
 
-        var zipCode : Int = 48302;
-        var units : String = "imperial"
+        var zipCode : Int = 48302
+        val units = "imperial"
 
         // format URL by zipcode (defaul to US)
         // also will bring back data in imperial units
@@ -59,24 +68,23 @@ class MainActivity : AppCompatActivity() {
                 null,
                 Response.Listener { response ->
                     //this prints the WHOLE string
-                    Log.i("JSON response", response.toString());
+                    Log.i("JSON response", response.toString())
                     try {
-                        //get description of weather
+                        // get description of weather and temperature
                         val weather : JSONArray = response.getJSONArray("weather")
                         val mainObj : JSONObject = response.getJSONObject("main")
-                        //since it's one day of weather,
-                        // there's one object in the array
+                        //since it's one day of weather, there's one object in the array
                         dailyWeather = weather.getJSONObject(0)
                         val id = dailyWeather?.getInt("id")
                         val mainWeather = dailyWeather?.getString("main")
                         val description = dailyWeather?.getString("description")
                         val icon = dailyWeather?.getString("icon")
-                        val temp : Int? = mainObj.getInt("temp")
+                        dailyTemp = mainObj.getInt("temp")
                         Log.i("JSON info", "ID: $id")
                         Log.i("JSON info", "main weather: $mainWeather")
                         Log.i("JSON info", "Description: $description")
                         Log.i("JSON info", "Icon: $icon")
-                        Log.i("JSON info", "Temp: $temp")
+                        Log.i("JSON info", "Temp: $dailyTemp")
                     } catch (ex: JSONException) {
                         Log.e("JSON Error", ex.message!!)
                     }
@@ -93,24 +101,35 @@ class MainActivity : AppCompatActivity() {
             null,
             Response.Listener { response ->
                 //this prints the WHOLE string
-                Log.i("JSON week response", response.toString());
+                Log.i("JSON week response", response.toString())
                 try {
                     //get description of weather
                     val forecast : JSONArray = response.getJSONArray("list")
+
+                    // Pick index to choose a time on the first day to get the weather
+                    var timeIndex : Int = 5
+
                     // we want a 5 day forecast at the same time each day, so we first
-                    // get an element for each day
-                    var firstElement : JSONObject = forecast.getJSONObject(5)
-                    var secondElement = forecast.getJSONObject(13)
-                    var thirdElement = forecast.getJSONObject(21)
-                    var fourthElement : JSONObject = forecast.getJSONObject(29)
-                    var fifthElement : JSONObject = forecast.getJSONObject(37)
+                    // get an element for each day by incrementing the time index by 8
+                    val firstElement : JSONObject = forecast.getJSONObject(timeIndex)
+                    val secondElement = forecast.getJSONObject(timeIndex + 8)
+                    val thirdElement = forecast.getJSONObject(timeIndex + 16)
+                    val fourthElement : JSONObject = forecast.getJSONObject(timeIndex + 24)
+                    val fifthElement : JSONObject = forecast.getJSONObject(timeIndex + 32)
 
                     // Each object only has one weather array, so we get that from the element
-                    var weatherArray1 : JSONArray = firstElement.getJSONArray("weather")
-                    var weatherArray2 : JSONArray = secondElement.getJSONArray("weather")
-                    var weatherArray3 : JSONArray = thirdElement.getJSONArray("weather")
-                    var weatherArray4 : JSONArray = fourthElement.getJSONArray("weather")
-                    var weatherArray5 : JSONArray = fifthElement.getJSONArray("weather")
+                    val weatherArray1 : JSONArray = firstElement.getJSONArray("weather")
+                    val weatherArray2 : JSONArray = secondElement.getJSONArray("weather")
+                    val weatherArray3 : JSONArray = thirdElement.getJSONArray("weather")
+                    val weatherArray4 : JSONArray = fourthElement.getJSONArray("weather")
+                    val weatherArray5 : JSONArray = fifthElement.getJSONArray("weather")
+
+                    // Get the main obj for temperature
+                    val mainObj1 : JSONObject = firstElement.getJSONObject("main")
+                    val mainObj2 : JSONObject = secondElement.getJSONObject("main")
+                    val mainObj3 : JSONObject = thirdElement.getJSONObject("main")
+                    val mainObj4 : JSONObject = fourthElement.getJSONObject("main")
+                    val mainObj5 : JSONObject = fifthElement.getJSONObject("main")
 
                     // There's only one weather object in the array, so let's grab that
                     day1Weather = weatherArray1.getJSONObject(0)
@@ -119,12 +138,19 @@ class MainActivity : AppCompatActivity() {
                     day4Weather = weatherArray4.getJSONObject(0)
                     day5Weather = weatherArray5.getJSONObject(0)
 
+                    // Get the temperature for each day
+                    day1Temp = mainObj1.getInt("temp")
+                    day2Temp = mainObj2.getInt("temp")
+                    day3Temp = mainObj3.getInt("temp")
+                    day4Temp = mainObj4.getInt("temp")
+                    day5Temp = mainObj5.getInt("temp")
+
                     // Print to info log
-                    Log.i("Day 1 Weather", day1Weather.toString());
-                    Log.i("Day 2 Weather", day2Weather.toString());
-                    Log.i("Day 3 Weather", day3Weather.toString());
-                    Log.i("Day 4 Weather", day4Weather.toString());
-                    Log.i("Day 5 Weather", day5Weather.toString());
+                    Log.i("Day 1 Weather", day1Weather.toString())
+                    Log.i("Day 2 Weather", day2Weather.toString())
+                    Log.i("Day 3 Weather", day3Weather.toString())
+                    Log.i("Day 4 Weather", day4Weather.toString())
+                    Log.i("Day 5 Weather", day5Weather.toString())
 
 
                 } catch (ex: JSONException) {
