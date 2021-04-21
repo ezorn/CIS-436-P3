@@ -33,33 +33,38 @@ class MainActivity : AppCompatActivity() {
                     .commitNow()
         }
 
-        // API code
-        // instantiate request
-        requestQueue = Volley.newRequestQueue(this)
-
-        // create object request
-        val url = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=42baaa2f9a6308d59c4f77954ec6fea4"
-        JsonObjectRequest(Request.Method.GET, url, null,
-                Response.Listener { response ->
-                    try {
-                        var weather : JSONArray = response.getJSONArray("weather");
-                        // get description of weahter from the JSON object
-
-                        // one day of weather -- get object 0 from the array
-                        // multi day forecast -- iterate through array
-
-                        // store current weather ID
-                        // get main weather String
-                        // get description String
-                        // get icon String value -- use to pull icon file for imageViewer
-
-                    } catch (e: JSONException){
-
-                    }
-                }
-        )
-
-
-
-    }
+        private var requestQueue: RequestQueue? = null
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
+            //instantiate the request queue
+            requestQueue = Volley.newRequestQueue(this)
+            //create object request
+            val jsonObjectRequest = JsonObjectRequest(
+                    Request.Method.GET,  //the request method
+                    "https://api.openweathermap.org/data/2.5/weather?q=London&appid=42baaa2f9a6308d59c4f77954ec6fea4",
+                    null,
+                    Response.Listener { response ->
+                        //this prints the WHOLE string
+                        //Log.i("JSON response", response.toString());
+                        try {
+                            //get description of weather
+                            val weather = response.getJSONArray("weather")
+                            //since it's one day of weather,
+                            // there's one object in the array
+                            val currentWeather = weather.getJSONObject(0)
+                            val id = currentWeather.getInt("id")
+                            val mainWeather = currentWeather.getString("main")
+                            val description = currentWeather.getString("description")
+                            Log.i("JSON info", "ID: $id")
+                            Log.i("JSON info", "main weather: $mainWeather")
+                            Log.i("JSON info", "Description: $description")
+                        } catch (ex: JSONException) {
+                            Log.e("JSON Error", ex.message!!)
+                        }
+                    },
+                    Response.ErrorListener { }
+            ) //end of JSON object request
+            requestQueue.add(jsonObjectRequest)
+        } //end onCreate
 }
