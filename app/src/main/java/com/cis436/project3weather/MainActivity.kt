@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -18,6 +19,7 @@ import org.json.JSONException
 import org.json.JSONObject
 
 import com.cis436.project3weather.ui.main.MainFragment
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
@@ -214,8 +216,7 @@ class MainActivity : AppCompatActivity() {
                     .commitNow()
         }
         getDailyWeather(48302)
-        getWeeklyForecast(48302)
-
+        loadWeeklyForecast(48302)
     } //end onCreate
 
     // FUNCTION: get zipcode from user input and return as integer
@@ -237,5 +238,39 @@ class MainActivity : AppCompatActivity() {
             // temp -- global variable -- format as string
             // icon -- get from each day's weather object
                 // dayXweather.getString("icon")
+
+    fun loadWeeklyForecast(zipCode : Int) {
+        // Get the weekly forecast
+        getWeeklyForecast(zipCode)
+
+        // Initialize the TextViews for dates & temperatures
+        var day1Date : TextView = findViewById(R.id.DayBox1)
+        var day2Date : TextView = findViewById(R.id.DayBox2)
+        var day3Date : TextView = findViewById(R.id.DayBox3)
+        var day4Date : TextView = findViewById(R.id.DayBox4)
+        var day5Date : TextView = findViewById(R.id.DayBox5)
+
+        var day1Temp : TextView = findViewById(R.id.TempaturesBox1)
+        var day2Temp : TextView = findViewById(R.id.TempaturesBox2)
+        var day3Temp : TextView = findViewById(R.id.TempaturesBox3)
+        var day4Temp : TextView = findViewById(R.id.TempaturesBox4)
+        var day5Temp : TextView = findViewById(R.id.TempaturesBox5)
+
+        // Format dates for UI
+        var dates = arrayOf(day1dt, day2dt, day3dt, day4dt, day5dt)
+        var index : Int = 0
+        while (index < 5) {
+            var formattedDate : String = formatDate(dates[index].toString())
+            dates[index] = formattedDate
+        }
+
+        // Populate TextViews with formatted dates
+        day1Date.setText(dates[0])
+        day2Date.setText(dates[1])
+        day3Date.setText(dates[2])
+        day4Date.setText(dates[3])
+        day5Date.setText(dates[4])
+
+    }
 
 }
