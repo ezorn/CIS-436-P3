@@ -20,6 +20,7 @@ import org.json.JSONObject
 import com.cis436.project3weather.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
+   private var requestQueue: RequestQueue? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -29,7 +30,6 @@ class MainActivity : AppCompatActivity() {
                     .commitNow()
         }
 
-        private var requestQueue: RequestQueue? = null
         // super.onCreate(savedInstanceState)   // don't think i need to call this here bc it is called above
         setContentView(R.layout.main_activity)
         //instantiate the request queue
