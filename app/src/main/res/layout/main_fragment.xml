@@ -228,4 +228,55 @@
         app:layout_constraintTop_toBottomOf="@+id/WeatherBox4"
         tools:src="@tools:sample/avatars" />
 
+    <TextView
+        android:id="@+id/LocationBox"
+        android:layout_width="325dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginRight="43dp"
+        android:layout_marginBottom="26dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ZipCodeBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ZipCodeBox"
+        android:layout_width="325dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginRight="43dp"
+        android:layout_marginBottom="28dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto_bold"
+        android:hint="Enter Zip Code"
+        android:inputType="number"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/SwitchToSingleButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LocationBox" />
+
+    <Button
+        android:id="@+id/SwitchToSingleButton"
+        android:layout_width="325dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
+        android:text="Single Day View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ZipCodeBox" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
