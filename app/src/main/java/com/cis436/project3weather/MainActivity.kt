@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         //instantiate the request queue
         requestQueue = Volley.newRequestQueue(this)
+
         //create object request
         val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.GET,  //the request method
