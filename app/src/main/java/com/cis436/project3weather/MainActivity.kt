@@ -41,58 +41,54 @@ class MainActivity : AppCompatActivity() {
     var day4Temp : Int? = null
     var day5Temp : Int? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
-                    .commitNow()
-        }
+    val units = "imperial"
 
+    // format URL by zipcode (default to US)
+    // also will bring back data in imperial units
+    fun getDailyWeather(zipCode : Int) {
         //instantiate the request queue
         requestQueue = Volley.newRequestQueue(this)
 
-        var zipCode : Int = 48302
-        val units = "imperial"
-
-        // format URL by zipcode (defaul to US)
-        // also will bring back data in imperial units
         var urlDay : String = "https://api.openweathermap.org/data/2.5/weather?zip=$zipCode&units=$units&appid=$API_KEY"
-        var urlWeek : String = "https://api.openweathermap.org/data/2.5/forecast?zip=$zipCode&units=$units&&appid=$API_KEY"
 
         //create object request for single day weather
         val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.GET,  //the request method
-                urlDay,
-                null,
-                Response.Listener { response ->
-                    //this prints the WHOLE string
-                    Log.i("JSON response", response.toString())
-                    try {
-                        // get description of weather and temperature
-                        val weather : JSONArray = response.getJSONArray("weather")
-                        val mainObj : JSONObject = response.getJSONObject("main")
-                        //since it's one day of weather, there's one object in the array
-                        dailyWeather = weather.getJSONObject(0)
-                        val id = dailyWeather?.getInt("id")
-                        val mainWeather = dailyWeather?.getString("main")
-                        val description = dailyWeather?.getString("description")
-                        val icon = dailyWeather?.getString("icon")
-                        dailyTemp = mainObj.getInt("temp")
-                        Log.i("JSON info", "ID: $id")
-                        Log.i("JSON info", "main weather: $mainWeather")
-                        Log.i("JSON info", "Description: $description")
-                        Log.i("JSON info", "Icon: $icon")
-                        Log.i("JSON info", "Temp: $dailyTemp")
-                    } catch (ex: JSONException) {
-                        Log.e("JSON Error", ex.message!!)
-                    }
-                },
-                Response.ErrorListener { }
+            Request.Method.GET,  //the request method
+            urlDay,
+            null,
+            Response.Listener { response ->
+                //this prints the WHOLE string
+                Log.i("JSON response", response.toString())
+                try {
+                    // get description of weather and temperature
+                    val weather : JSONArray = response.getJSONArray("weather")
+                    val mainObj : JSONObject = response.getJSONObject("main")
+                    //since it's one day of weather, there's one object in the array
+                    dailyWeather = weather.getJSONObject(0)
+                    val id = dailyWeather?.getInt("id")
+                    val mainWeather = dailyWeather?.getString("main")
+                    val description = dailyWeather?.getString("description")
+                    val icon = dailyWeather?.getString("icon")
+                    dailyTemp = mainObj.getInt("temp")
+                    Log.i("JSON info", "ID: $id")
+                    Log.i("JSON info", "main weather: $mainWeather")
+                    Log.i("JSON info", "Description: $description")
+                    Log.i("JSON info", "Icon: $icon")
+                    Log.i("JSON info", "Temp: $dailyTemp")
+                } catch (ex: JSONException) {
+                    Log.e("JSON Error", ex.message!!)
+                }
+            },
+            Response.ErrorListener { }
         ) //end of JSON object request
         requestQueue!!.add(jsonObjectRequest)
+    }
 
+    fun getWeeklyForecast(zipCode: Int) {
+        //instantiate the request queue
+        requestQueue = Volley.newRequestQueue(this)
+
+        var urlWeek : String = "https://api.openweathermap.org/data/2.5/forecast?zip=$zipCode&units=$units&&appid=$API_KEY"
 
         //create object request for multi day weather
         val jsonObjectRequestWeek = JsonObjectRequest(
@@ -152,7 +148,6 @@ class MainActivity : AppCompatActivity() {
                     Log.i("Day 4 Weather", day4Weather.toString())
                     Log.i("Day 5 Weather", day5Weather.toString())
 
-
                 } catch (ex: JSONException) {
                     Log.e("JSON Error", ex.message!!)
                 }
@@ -160,5 +155,19 @@ class MainActivity : AppCompatActivity() {
             Response.ErrorListener { }
         ) //end of JSON object request
         requestQueue!!.add(jsonObjectRequestWeek)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.main_activity)
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, MainFragment.newInstance())
+                    .commitNow()
+        }
+
+        getDailyWeather(48302)
+        getWeeklyForecast(48302)
+
     } //end onCreate
 }
