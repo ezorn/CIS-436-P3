@@ -181,6 +181,28 @@ class MainActivity : AppCompatActivity() {
         requestQueue!!.add(jsonObjectRequestWeek)
     }
 
+    // Take dt_text string from OpenWeather API and format it to be the date we want on the forecast screen
+    fun formatDate(dt : String): String {
+        // dt_text string format: "YYYY-MM-DD HH:MM:SS"
+        // Take dt_text string and split date & time
+        val delim1 = " "
+        val list1 = dt.split(delim1)   // [ date, time ]
+
+        // Split year, month, day
+        val delim2 = "-"
+        val dateString : String = dt[0].toString()
+        val dateList = dateString.split(delim2) // [ YYYY, MM, DD ]
+
+        // Trim any leading zeroes from the month
+        val month = dateList[1].trimStart('0')
+        val day = dateList[2]
+
+        // Assemble final formatted string
+        val cleanDate : String = month + "/" + day
+
+        return cleanDate
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -189,7 +211,6 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.container, MainFragment.newInstance())
                     .commitNow()
         }
-
         getDailyWeather(48302)
         getWeeklyForecast(48302)
 
