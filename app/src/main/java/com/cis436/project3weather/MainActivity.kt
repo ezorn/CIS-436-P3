@@ -41,6 +41,12 @@ class MainActivity : AppCompatActivity() {
     var day4Temp : Int? = null
     var day5Temp : Int? = null
 
+    var day1dt : String? = null
+    var day2dt : String? = null
+    var day3dt : String? = null
+    var day4dt : String? = null
+    var day5dt : String? = null
+
     val units = "imperial"
 
     // format URL by zipcode (default to US)
@@ -127,6 +133,13 @@ class MainActivity : AppCompatActivity() {
                     val mainObj4 : JSONObject = fourthElement.getJSONObject("main")
                     val mainObj5 : JSONObject = fifthElement.getJSONObject("main")
 
+                    // Get the date
+                    day1dt = firstElement.getString("dt_txt")
+                    day2dt = secondElement.getString("dt_txt")
+                    day3dt = thirdElement.getString("dt_txt")
+                    day4dt = fourthElement.getString("dt_txt")
+                    day5dt = fifthElement.getString("dt_txt")
+
                     // There's only one weather object in the array, so let's grab that
                     day1Weather = weatherArray1.getJSONObject(0)
                     day2Weather = weatherArray2.getJSONObject(0)
@@ -143,6 +156,7 @@ class MainActivity : AppCompatActivity() {
 
                     // Print to info log
                     Log.i("Day 1 Weather", day1Weather.toString())
+                    Log.i("Day 1: ", day1dt.toString())
                     Log.i("Day 2 Weather", day2Weather.toString())
                     Log.i("Day 3 Weather", day3Weather.toString())
                     Log.i("Day 4 Weather", day4Weather.toString())
@@ -170,4 +184,13 @@ class MainActivity : AppCompatActivity() {
         getWeeklyForecast(48302)
 
     } //end onCreate
+
+    // FUNCTION: load daily weather
+        // get zip code from user input
+        // getDailyWeather(userZipCode)
+        // Get weather data
+            // mainWeather = dailyWeather.getString("main")
+            // description = dailyWeather.getString("description")
+            // icon = dailyWeather.getString("icon")
+        //
 }
