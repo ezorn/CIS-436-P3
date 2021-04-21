@@ -190,7 +190,7 @@ class MainActivity : AppCompatActivity() {
 
         // Split year, month, day
         val delim2 = "-"
-        val dateString : String = dt[0].toString()
+        val dateString = list1[0]
         val dateList = dateString.split(delim2) // [ YYYY, MM, DD ]
 
         // Trim any leading zeroes from the month
