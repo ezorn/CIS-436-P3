@@ -22,8 +22,11 @@ import com.cis436.project3weather.ui.main.MainFragment
 class MainActivity : AppCompatActivity() {
 
     private var requestQueue: RequestQueue? = null
-    private final val API_KEY : String = "42baaa2f9a6308d59c4f77954ec6fea4"
+
+    // Utilities
     val degreeUnicode = "\u00b0"
+    val units = "imperial"
+    private val API_KEY : String = "42baaa2f9a6308d59c4f77954ec6fea4"
 
     // Daily forecast values
     var dailyWeather : JSONObject? = null
@@ -47,8 +50,6 @@ class MainActivity : AppCompatActivity() {
     var day3dt : String? = null
     var day4dt : String? = null
     var day5dt : String? = null
-
-    val units = "imperial"
 
     // format URL by zipcode (default to US)
     // also will bring back data in imperial units
@@ -234,4 +235,5 @@ class MainActivity : AppCompatActivity() {
             // dates -- global variables
                 // format them with formatDate()
             // temp -- global variable -- format as string
+            // icon -- get from each day's weather object
 }
