@@ -20,9 +20,6 @@ import org.json.JSONObject
 import com.cis436.project3weather.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
-
-    var requestQueue = RequestQueue()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
