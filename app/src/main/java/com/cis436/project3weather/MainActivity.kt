@@ -62,6 +62,6 @@ class MainActivity : AppCompatActivity() {
                 },
                 Response.ErrorListener { }
         ) //end of JSON object request
-        requestQueue.add(jsonObjectRequest)
+        requestQueue!!.add(jsonObjectRequest)
     } //end onCreate
 }
