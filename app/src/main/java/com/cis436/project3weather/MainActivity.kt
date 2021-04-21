@@ -22,7 +22,11 @@ import com.cis436.project3weather.ui.main.MainFragment
 class MainActivity : AppCompatActivity() {
 
     private var requestQueue: RequestQueue? = null
-    private final val API_KEY : String = "42baaa2f9a6308d59c4f77954ec6fea4"
+
+    // Utilities
+    val degreeUnicode = "\u00b0"
+    val units = "imperial"
+    private val API_KEY : String = "42baaa2f9a6308d59c4f77954ec6fea4"
 
     // Daily forecast values
     var dailyWeather : JSONObject? = null
@@ -46,8 +50,6 @@ class MainActivity : AppCompatActivity() {
     var day3dt : String? = null
     var day4dt : String? = null
     var day5dt : String? = null
-
-    val units = "imperial"
 
     // format URL by zipcode (default to US)
     // also will bring back data in imperial units
@@ -109,7 +111,7 @@ class MainActivity : AppCompatActivity() {
                     val forecast : JSONArray = response.getJSONArray("list")
 
                     // Pick index to choose a time on the first day to get the weather
-                    var timeIndex : Int = 5
+                    var timeIndex : Int = 0
 
                     // we want a 5 day forecast at the same time each day, so we first
                     // get an element for each day by incrementing the time index by 8
@@ -155,12 +157,22 @@ class MainActivity : AppCompatActivity() {
                     day5Temp = mainObj5.getInt("temp")
 
                     // Print to info log
-                    Log.i("Day 1 Weather", day1Weather.toString())
                     Log.i("Day 1: ", day1dt.toString())
+                    Log.i("Day 1 Weather", day1Weather.toString())
+                    Log.i("Day 1 Temp", day1Temp.toString())
+                    Log.i("Day 2: ", day2dt.toString())
                     Log.i("Day 2 Weather", day2Weather.toString())
+                    Log.i("Day 2 Temp", day2Temp.toString())
+                    Log.i("Day 3: ", day3dt.toString())
                     Log.i("Day 3 Weather", day3Weather.toString())
+                    Log.i("Day 3 Temp", day3Temp.toString())
+                    Log.i("Day 4: ", day4dt.toString())
                     Log.i("Day 4 Weather", day4Weather.toString())
+                    Log.i("Day 4 Temp", day4Temp.toString())
+                    Log.i("Day 5: ", day5dt.toString())
                     Log.i("Day 5 Weather", day5Weather.toString())
+                    Log.i("Day 5 Temp", day5Temp.toString())
+
 
                 } catch (ex: JSONException) {
                     Log.e("JSON Error", ex.message!!)
@@ -171,6 +183,28 @@ class MainActivity : AppCompatActivity() {
         requestQueue!!.add(jsonObjectRequestWeek)
     }
 
+    // Take dt_text string from OpenWeather API and format it to be the date we want on the forecast screen
+    fun formatDate(dt : String): String {
+        // dt_text string format: "YYYY-MM-DD HH:MM:SS"
+        // Take dt_text string and split date & time
+        val delim1 = " "
+        val list1 = dt.split(delim1)   // [ date, time ]
+
+        // Split year, month, day
+        val delim2 = "-"
+        val dateString = list1[0]
+        val dateList = dateString.split(delim2) // [ YYYY, MM, DD ]
+
+        // Trim any leading zeroes from the month
+        val month = dateList[1].trimStart('0')
+        val day = dateList[2]
+
+        // Assemble final formatted string
+        val cleanDate : String = month + "/" + day
+
+        return cleanDate
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -179,18 +213,29 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.container, MainFragment.newInstance())
                     .commitNow()
         }
-
         getDailyWeather(48302)
         getWeeklyForecast(48302)
 
     } //end onCreate
 
+    // FUNCTION: get zipcode from user input and return as integer
+
     // FUNCTION: load daily weather
-        // get zip code from user input
+        // get zip code
         // getDailyWeather(userZipCode)
         // Get weather data
             // mainWeather = dailyWeather.getString("main")
             // description = dailyWeather.getString("description")
             // icon = dailyWeather.getString("icon")
-        //
+
+    // FUNCTION: load 5-day weather
+        // get zipcode
+        // getWeeklyForecast(userZipCode)
+        // Get weather data
+            // dates -- global variables
+                // format them with formatDate()
+            // temp -- global variable -- format as string
+            // icon -- get from each day's weather object
+                // dayXweather.getString("icon")
+
 }
