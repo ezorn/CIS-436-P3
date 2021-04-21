@@ -9,122 +9,6 @@
     tools:context=".ui.main.MainFragment">
 
     <TextView
-        android:id="@+id/DayBox7"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteY="550dp" />
-
-    <ImageView
-        android:id="@+id/WeatherBox7"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="584dp"
-        tools:src="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/TempaturesBox7"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="289dp"
-        tools:layout_editor_absoluteY="584dp" />
-
-    <ImageView
-        android:id="@+id/WeatherBox6"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="490dp"
-        tools:src="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/DayBox6"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteY="456dp" />
-
-    <TextView
-        android:id="@+id/TempaturesBox6"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="289dp"
-        tools:layout_editor_absoluteY="490dp" />
-
-    <ImageView
-        android:id="@+id/WeatherBox5"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="392dp"
-        tools:src="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/TempaturesBox3"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="290dp"
-        tools:layout_editor_absoluteY="187dp" />
-
-    <TextView
-        android:id="@+id/DayBox5"
-        android:layout_width="122dp"
-        android:layout_height="33dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteY="359dp" />
-
-    <TextView
-        android:id="@+id/TempaturesBox5"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="289dp"
-        tools:layout_editor_absoluteY="392dp" />
-
-    <TextView
-        android:id="@+id/DayBox4"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteY="257dp" />
-
-    <ImageView
-        android:id="@+id/WeatherBox4"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="290dp"
-        tools:src="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/TempaturesBox4"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="289dp"
-        tools:layout_editor_absoluteY="290dp" />
-
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="match_parent"
-        android:layout_height="34dp"
-        android:text="MainFragment"
-        android:textSize="36sp" />
-
-    <TextView
         android:id="@+id/DayBox1"
         android:layout_width="145dp"
         android:layout_height="40dp"
@@ -190,5 +74,71 @@
         tools:layout_editor_absoluteX="137dp"
         tools:layout_editor_absoluteY="194dp"
         tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/TempaturesBox3"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="290dp"
+        tools:layout_editor_absoluteY="187dp" />
+
+    <TextView
+        android:id="@+id/DayBox4"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteY="257dp" />
+
+    <ImageView
+        android:id="@+id/WeatherBox4"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="290dp"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/TempaturesBox4"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="289dp"
+        tools:layout_editor_absoluteY="290dp" />
+
+    <TextView
+        android:id="@+id/DayBox5"
+        android:layout_width="122dp"
+        android:layout_height="33dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteY="359dp" />
+
+    <ImageView
+        android:id="@+id/WeatherBox5"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="392dp"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/TempaturesBox5"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="289dp"
+        tools:layout_editor_absoluteY="392dp" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:text="MainFragment"
+        android:textSize="36sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
