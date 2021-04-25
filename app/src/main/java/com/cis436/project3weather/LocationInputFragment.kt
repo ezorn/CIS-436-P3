@@ -63,6 +63,7 @@ class LocationInputFragment : Fragment() {
 
             // Then, load forecast
             (activity as MainActivity).getDailyWeather(zipcode!!)
+            // Instantiate a daily forecast fragment
             (activity as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.weatherFragmentContainer, DailyForecastFragment()).commit()
         }

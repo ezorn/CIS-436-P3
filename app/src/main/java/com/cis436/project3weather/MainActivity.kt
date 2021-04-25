@@ -19,8 +19,6 @@ import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: SingleViewModel
-
     private var requestQueue: RequestQueue? = null
 
     // Utilities

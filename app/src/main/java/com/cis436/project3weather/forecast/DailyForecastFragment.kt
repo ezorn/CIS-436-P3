@@ -41,7 +41,8 @@ class DailyForecastFragment : Fragment() {
         var weatherView : TextView = view.findViewById(R.id.dailyWeatherView)
         var descriptionView : TextView = view.findViewById(R.id.dailyDescriptionView)
 
-        // Get icon file name
+        // Get icon file name -- the value that dailyIcon equals needs to go
+        // R.drawable.HERE, but I am still figuring out how to retrieve it
 
         // Update UI
         cityName.text = dailyLocation
