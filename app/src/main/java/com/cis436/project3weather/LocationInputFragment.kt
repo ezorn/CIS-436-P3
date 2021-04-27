@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import com.cis436.project3weather.forecast.DailyForecastFragment
+import com.cis436.project3weather.forecast.FiveDayForecastFragment
 import org.json.JSONObject
 import java.lang.NumberFormatException
 
@@ -79,14 +80,22 @@ class LocationInputFragment : Fragment() {
             if (validInput) {
                 // Convert user input to integer
                 zipcode = userInputZipcode.toInt()
+                //weeklyForecastBtn.text = "input success!"
+                (activity as MainActivity).getWeeklyForecast(zipcode!!)
             }
             else {
                 // quit out
+                zipcode = -1
+                weeklyForecastBtn.text = "input error"
                 return@setOnClickListener
+
             }
 
             // Then, load forecast
             (activity as MainActivity).getWeeklyForecast(zipcode!!)
+            // Instantiate a daily forecast fragment
+            (activity as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.weatherFragmentContainer, FiveDayForecastFragment()).commit()
         }
 
         return view

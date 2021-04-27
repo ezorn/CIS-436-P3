@@ -4,8 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="zipcode_header">Enter your zip code:</string>
     <string name="zipcode_input_hint">Zip code</string>
-    <string name="btn_label_daily">Daily Forecast</string>
-    <string name="btn_label_5day">5 Day Forecast</string>
+    <string name="btn_label_daily">Daily Forecast </string>
+    <string name="btn_label_5day">5 Day Forecast </string>
     <string name="todays_weather_header">Today\'s Weather In</string>
     <string name="icon_content_desc">Icon depicting weather</string>
 </resources>
