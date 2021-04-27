@@ -1,25 +1,21 @@
 package com.cis436.project3weather
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
-
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 
+import com.cis436.project3weather.ui.main.MainFragment
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-
-import com.cis436.project3weather.ui.main.MainFragment
-import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     // Daily forecast values
     var dailyWeather : JSONObject? = null
     var dailyTemp : Int? = null
+    var dailyLocation : String? = null
 
     // Weekly forecast values
     var day1Weather : JSONObject? = null
@@ -70,9 +67,10 @@ class MainActivity : AppCompatActivity() {
                 //this prints the WHOLE string
                 Log.i("JSON response", response.toString())
                 try {
-                    // get description of weather and temperature
+                    // get description of weather, location and temperature
                     val weather : JSONArray = response.getJSONArray("weather")
                     val mainObj : JSONObject = response.getJSONObject("main")
+                    dailyLocation = response.getString("name")
                     //since it's one day of weather, there's one object in the array
                     dailyWeather = weather.getJSONObject(0)
                     val id = dailyWeather?.getInt("id")
@@ -210,67 +208,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
-                    .commitNow()
+             supportFragmentManager.beginTransaction().add(R.id.root, LocationInputFragment()).commit()
         }
-        getDailyWeather(48302)
-        loadWeeklyForecast(48302)
+
     } //end onCreate
-
-    // FUNCTION: get zipcode from user input and return as integer
-
-    // FUNCTION: load daily weather
-        // get zip code
-        // getDailyWeather(userZipCode)
-        // Get weather data
-            // mainWeather = dailyWeather.getString("main")
-            // description = dailyWeather.getString("description")
-            // icon = dailyWeather.getString("icon")
-
-    // FUNCTION: load 5-day weather
-        // get zipcode
-        // getWeeklyForecast(userZipCode)
-        // Get weather data
-            // dates -- global variables
-                // format them with formatDate()
-            // temp -- global variable -- format as string
-            // icon -- get from each day's weather object
-                // dayXweather.getString("icon")
-
-    fun loadWeeklyForecast(zipCode : Int) {
-        // Get the weekly forecast
-        getWeeklyForecast(zipCode)
-
-        // Initialize the TextViews for dates & temperatures
-        var day1Date : TextView = findViewById(R.id.DayBox1)
-        var day2Date : TextView = findViewById(R.id.DayBox2)
-        var day3Date : TextView = findViewById(R.id.DayBox3)
-        var day4Date : TextView = findViewById(R.id.DayBox4)
-        var day5Date : TextView = findViewById(R.id.DayBox5)
-
-        var day1Temp : TextView = findViewById(R.id.TempaturesBox1)
-        var day2Temp : TextView = findViewById(R.id.TempaturesBox2)
-        var day3Temp : TextView = findViewById(R.id.TempaturesBox3)
-        var day4Temp : TextView = findViewById(R.id.TempaturesBox4)
-        var day5Temp : TextView = findViewById(R.id.TempaturesBox5)
-
-        // Format dates for UI
-        var dates = arrayOf(day1dt, day2dt, day3dt, day4dt, day5dt)
-        var index : Int = 0
-        while (index < 5) {
-            var formattedDate : String = formatDate(dates[index].toString())
-            dates[index] = formattedDate
-        }
-
-        // Populate TextViews with formatted dates
-        day1Date.setText(dates[0])
-        day2Date.setText(dates[1])
-        day3Date.setText(dates[2])
-        day4Date.setText(dates[3])
-        day5Date.setText(dates[4])
-
-    }
 
 }
