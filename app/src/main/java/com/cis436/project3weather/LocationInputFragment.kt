@@ -80,7 +80,7 @@ class LocationInputFragment : Fragment() {
             if (validInput) {
                 // Convert user input to integer
                 zipcode = userInputZipcode.toInt()
-                //weeklyForecastBtn.text = "input success!"
+
                 (activity as MainActivity).getWeeklyForecast(zipcode!!)
             }
             else {
