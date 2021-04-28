@@ -37,19 +37,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dailyWeatherTitle" />
 
-    <ImageView
-        android:id="@+id/dailyWeatherIcon"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="30dp"
-        android:contentDescription="@string/icon_content_desc"
-        android:foregroundGravity="center_horizontal"
-        android:src="@drawable/icon_01d"
-        app:layout_constraintBottom_toTopOf="@+id/dailyTempView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityNameDaily" />
-
     <TextView
         android:id="@+id/dailyTempView"
         android:layout_width="wrap_content"
@@ -62,29 +49,28 @@
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/dailyWeatherView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dailyWeatherIcon" />
+        app:layout_constraintTop_toBottomOf="@+id/dailyWeatherIcon"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/dailyWeatherView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center_horizontal"
-        android:text="sunny skies"
-        android:textColor="@color/navy"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/dailyDescriptionView"
+    <ImageView
+        android:id="@+id/dailyWeatherIcon"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="44dp"
+        android:contentDescription="@string/icon_content_desc"
+        android:foregroundGravity="center_horizontal"
+        android:src="@drawable/icon_01d"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dailyTempView" />
+        app:layout_constraintTop_toBottomOf="@+id/cityNameDaily" />
 
     <TextView
         android:id="@+id/dailyDescriptionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="337dp"
         android:fontFamily="@font/roboto_light_italic"
         android:gravity="center_horizontal"
         android:text="cloudy skies"
@@ -92,7 +78,24 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dailyWeatherView" />
+        app:layout_constraintTop_toBottomOf="@+id/dailyWeatherView"
+        app:layout_constraintVertical_bias="0.039" />
+
+    <TextView
+        android:id="@+id/dailyWeatherView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_horizontal"
+        android:text="sunny skies"
+        android:textColor="@color/navy"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dailyWeatherIcon"
+        app:layout_constraintVertical_bias="0.367" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

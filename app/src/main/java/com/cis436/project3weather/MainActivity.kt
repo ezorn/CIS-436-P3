@@ -178,7 +178,7 @@ class MainActivity : AppCompatActivity() {
                     Log.e("JSON Error", ex.message!!)
                 }
             },
-            Response.ErrorListener { }
+            Response.ErrorListener {}
         ) //end of JSON object request
         requestQueue!!.add(jsonObjectRequestWeek)
     }
